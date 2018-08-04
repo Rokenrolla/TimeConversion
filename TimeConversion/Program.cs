@@ -38,9 +38,7 @@ class Solution
 
     static void Main(string[] args)
     {
-
         string s = Console.ReadLine();
-
         string result = timeConversion(s);
         Console.WriteLine(result);
 
