@@ -5,10 +5,6 @@ using System.Linq;
 
 class Solution
 {
-
-    /*
-     * Complete the timeConversion function below.
-     */
     static string timeConversion(string s)
     {
         string thetime = "";
