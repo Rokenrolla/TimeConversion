@@ -33,7 +33,6 @@ class Solution
             thetime += Convert.ToString(newtime[i]);
         }
         return thetime;
-
     }
 
     static void Main(string[] args)
