@@ -8,30 +8,50 @@ class Solution
     static string timeConversion(string s)
     {
         string thetime = "";
-        string time = s;
         string[] newtime = new string[10];
-        if (s.Contains("PM"))
-        {
-            time = s;
-            for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 8; i++)
             {
-                newtime[i] = Convert.ToString(time[i]);
-            }
-            int a = Convert.ToInt32(newtime[0]);
-            int b = Convert.ToInt32(newtime[1]);
+            newtime[i] = Convert.ToString(s[i]);
+        }
+      
+        int a = Convert.ToInt32(newtime[0]);
+        int b = Convert.ToInt32(newtime[1]);
+
+        if (a==1 & b==2 & s.Contains("A"))
+        {
             int c = 10 * a + b + 12;
+            if (c == 24) c = 0;
             newtime[0] = Convert.ToString(c / 10);
             newtime[1] = Convert.ToString(c % 10);
+            for (int i = 0; i < 8; i++)
+            {
+                thetime += Convert.ToString(newtime[i]);
+            }
+            return thetime;
         }
-        else return s;
-        for (int i = 0; i < 10; i++)
+        else if (s.Contains("A"))
+            return s.Remove(s.Length - 2);
+
+        else if (a==1 & b==2)
+            return s.Remove(s.Length - 2);
+
+        else
         {
-            thetime += Convert.ToString(newtime[i]);
+            int c = 10 * a + b + 12;
+            if (c == 24) c = 0;
+            newtime[0] = Convert.ToString(c / 10);
+            newtime[1] = Convert.ToString(c % 10);
+            for (int i = 0; i < 8; i++)
+            {
+                thetime += Convert.ToString(newtime[i]);
+            }
+            return thetime;
         }
-        return thetime;
+
+
     }
 
-    static void Main(string[] args)
+        static void Main(string[] args)
     {
         string s = Console.ReadLine();
         string result = timeConversion(s);
